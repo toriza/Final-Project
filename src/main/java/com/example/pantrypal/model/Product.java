@@ -1,24 +1,25 @@
 package com.example.pantrypal.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Data
 @NoArgsConstructor
 @Table(name = "AllProducts")
 
+
 public class Product {
     @Id
-    @GeneratedValue
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
+    @Column(length = 500)
     private String description;
     private double price;
     private int quantity;
