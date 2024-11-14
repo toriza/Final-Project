@@ -1,5 +1,6 @@
 package com.example.pantrypal.controller;
 
+import com.example.pantrypal.dto.ModifyProductRequest;
 import com.example.pantrypal.model.Product;
 import com.example.pantrypal.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -36,10 +37,10 @@ public class ProductController {
         return productService.updateProduct(product, id);
     }
 
-//    @PatchMapping("/{id}")
-//    public Product updateQuantity(@RequestBody @Valid ModifyQuantityRequest modifyQuantityRequest, @PathVariable Long id) {
-//        return productService.updateProduct(modifyQuantityRequest, id);
-//    }
+    @PatchMapping("/{id}")
+    public Product updateProductFields(@RequestBody ModifyProductRequest modifyProductRequest, @PathVariable Long id) {
+        return productService.updateProductFields(id, modifyProductRequest);
+    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

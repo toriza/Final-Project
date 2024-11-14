@@ -41,7 +41,7 @@ public class Product {
         return this.quantity;
     }
 
-    public int removeQuantity(int quantity) {
+    public int reduceQuantity(int quantity) {
         if (this.quantity < quantity) {
             this.quantity = 0;
         }
