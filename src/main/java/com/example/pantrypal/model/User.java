@@ -1,6 +1,4 @@
 package com.example.pantrypal.model;
-//Entity class for representing a User in the database
-//Stores user information and links to their pantry and shopping list
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,9 +14,11 @@ import static jakarta.persistence.FetchType.EAGER;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String username;
     private String password;
