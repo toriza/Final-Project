@@ -1,9 +1,9 @@
 package com.example.pantrypal.service;
 
 import com.example.pantrypal.dto.ModifyProductRequest;
+import com.example.pantrypal.model.Product;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
-import com.example.pantrypal.model.Product;
 import org.springframework.stereotype.Service;
 import com.example.pantrypal.repository.ProductRepository;
 
@@ -15,8 +15,8 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
-    @Transactional
 
+    @Transactional
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
@@ -25,27 +25,35 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product findById(Long id) {
-        return productRepository.findById(id).orElse(null);
-    }
 
-    @Transactional
-    public Product updateProduct(Product productToUpdate, Long id) {
+    public Product findById(Long id) throws Exception {
         var product = productRepository.findById(id);
 
         if (product.isEmpty()) {
-            return null;
+            throw new Exception(id.toString());
         }
+        return product.get();
+
+    }
+
+    @Transactional
+    public Product updateProduct(Product productToUpdate, Long id) throws Exception {
+        var product = productRepository.findById(id);
+
+        if (product.isEmpty()) {
+            throw new Exception(id.toString());
+        }
+
         productToUpdate.setId(id);
         return productRepository.save(productToUpdate);
     }
 
     @Transactional
-    public Product updateProductFields(Long id, ModifyProductRequest modifyProductRequest) {
+    public Product updateProductFields(Long id, ModifyProductRequest modifyProductRequest) throws Exception {
         Product product = productRepository.findById(id).orElse(null);
 
         if (product == null) {
-            return null;
+            throw new Exception(id.toString());
         }
 
         if (modifyProductRequest.getName() != null) {

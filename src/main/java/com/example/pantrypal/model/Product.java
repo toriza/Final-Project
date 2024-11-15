@@ -1,6 +1,7 @@
 package com.example.pantrypal.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +19,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
+
     @Column(length = 500)
     private String description;
+
+    @Positive(message = "Price must be positive")
     private double price;
+
+    @Positive(message = "Quantity must be positive")
     private int quantity;
+    
     private String storingLocation;
 
 

@@ -23,7 +23,8 @@ public class DataLoader implements CommandLineRunner {
         var savedProducts = productRepository.saveAll(List.of(
                 new Product("Milk", "Whole", 2.15, 1, "Fridge"),
                 new Product("Detergent", "Universal", 5, 1, "Pantry"),
-                new Product("Tomato", "Red", 0.5, 3, "Pantry")
+                new Product("Tomato", "Red", 0.5, 3, "Pantry"),
+                new Product("Banana", "Yellow", 1.2, 5, "Pantry")
         ));
 
 //        roleService.save(new Role("ROLE_USER"));
