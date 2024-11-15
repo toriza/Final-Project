@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.pantrypal.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +59,7 @@ public class ProductService {
 
         if (modifyProductRequest.getName() != null) {
             product.setName(modifyProductRequest.getName());
+            System.out.println("updated name: " + product.getName());
         }
         if (modifyProductRequest.getDescription() != null) {
             product.setDescription(modifyProductRequest.getDescription());
@@ -71,13 +73,44 @@ public class ProductService {
         if (modifyProductRequest.getStoringLocation() != null) {
             product.setStoringLocation(modifyProductRequest.getStoringLocation());
         }
-
+        System.out.println("Heloouuu");
+        System.out.println(product);
         return productRepository.save(product);
     }
 
     @Transactional
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Product addQuantity (Long id, int quantityToAdd) throws Exception {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if (productOptional.isEmpty()) {
+            throw new Exception(id.toString());
+        }
+
+        Product product = productOptional.get();
+
+        product.addQuantity(quantityToAdd);
+
+        return productRepository.save(product);
+    }
+
+    @Transactional
+    public Product reduceQuantity (Long id, int quantityToAdd) throws Exception {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if (productOptional.isEmpty()) {
+            throw new Exception(id.toString());
+        }
+
+        Product product = productOptional.get();
+
+        product.reduceQuantity(quantityToAdd);
+
+        return productRepository.save(product);
     }
 
 }

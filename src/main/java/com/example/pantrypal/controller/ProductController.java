@@ -53,4 +53,14 @@ public class ProductController {
     public void delete(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
+
+    @PostMapping("/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product changeQuantity(@RequestBody int quantity, @PathVariable Long id) throws Exception {
+        if (quantity >= 0) {
+            return productService.addQuantity(id, quantity);
+        } else {
+            return productService.reduceQuantity(id, Math.abs(quantity));
+        }
+    }
 }
