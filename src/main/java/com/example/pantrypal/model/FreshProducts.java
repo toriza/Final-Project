@@ -1,5 +1,6 @@
 package com.example.pantrypal.model;
 
+
 import java.util.Date;
 
 public class FreshProducts extends Product {

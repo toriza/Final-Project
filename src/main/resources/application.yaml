@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:9098/pantrypal_db
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    show-sql: true
+
+server:
+  error:
+    include-stacktrace: never
