@@ -8,6 +8,7 @@
 5. Authentication & Authorization
 6. Endpoints
 7. Exceptions & Error Handling
+
 //8. Class & Use Case Diagrams
 
 ---
@@ -76,7 +77,8 @@ A global exception handler is created using @ControllerAdvice to catch and handl
 
 ---
 
-//## 8. Diagrams
+## 8. Diagrams
 
-//### Class Diagram
+### Class Diagram
+![](./ClassDiagram.png)
 
