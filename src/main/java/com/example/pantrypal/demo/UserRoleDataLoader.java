@@ -21,10 +21,10 @@ public class UserRoleDataLoader implements CommandLineRunner {
         roleService.save(new Role("ROLE_USER"));
 
         userService.saveUser(new User("Admin", "admin", "4321"));
-        userService.saveUser(new User("James", "james", "1234"));
+        userService.saveUser(new User("User", "user", "1234"));
 
 
         roleService.addRoleToUser("admin", "ROLE_ADMIN");
-        roleService.addRoleToUser("james", "ROLE_USER");
+        roleService.addRoleToUser("user", "ROLE_USER");
     }
 }
