@@ -8,7 +8,7 @@
 5. Authentication & Authorization
 6. Endpoints
 7. Exceptions & Error Handling
-///8. Class & Use Case Diagrams
+//8. Class & Use Case Diagrams
 
 ---
 
