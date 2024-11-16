@@ -1,6 +1,8 @@
 package com.example.pantrypal.controller;
 
 import com.example.pantrypal.dto.ModifyProductRequest;
+import com.example.pantrypal.model.DryProduct;
+import com.example.pantrypal.model.FreshProduct;
 import com.example.pantrypal.model.Product;
 import com.example.pantrypal.service.ProductService;
 import jakarta.validation.Valid;
@@ -27,6 +29,31 @@ public class ProductController {
         return productService.findAll();
     }
 
+    @GetMapping("/fresh")
+    public List<FreshProduct> getFreshProducts() {
+        return productService.findAllFreshProducts();
+    }
+
+    @GetMapping("/fresh/expired")
+    public List<FreshProduct> getExpiredFreshProducts() {
+        return productService.findExpiredFreshProducts();
+    }
+
+    @GetMapping("/dry")
+    public List<DryProduct> getDryProducts() {
+        return productService.findAllDryProducts(null);
+    }
+
+    @GetMapping("/dry/edible")
+    public List<DryProduct> getEdibleDryProducts() {
+        return productService.findAllDryProducts(true);
+    }
+
+    @GetMapping("/dry/non-edible")
+    public List<DryProduct> getNonEdibleDryProducts() {
+        return productService.findAllDryProducts(false);
+    }
+
     @GetMapping("/{id}")
     public Product findById(@PathVariable Long id) throws Exception {
         return productService.findById(id);
@@ -34,7 +61,7 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Product create(@RequestBody Product product) {
+    public Product create(@RequestBody Product product) throws Exception {
         return productService.createProduct(product);
     }
 

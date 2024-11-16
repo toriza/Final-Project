@@ -7,14 +7,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+
 @Getter
 @Setter
 @Data
 @NoArgsConstructor
-@Table(name = "AllProducts")
+@Table(name = "all_products")
 
-
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +27,15 @@ public class Product {
     private String description;
 
     @Positive(message = "Price must be positive")
-    private double price;
+    private Double price;
 
     @Positive(message = "Quantity must be positive")
-    private int quantity;
+    private Integer quantity;
     
     private String storingLocation;
 
 
-    public Product(String name, String description, double price, int quantity, String storingLocation) {
+    public Product(String name, String description, Double price, Integer quantity, String storingLocation) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -58,4 +59,5 @@ public class Product {
         }
         return this.quantity;
     }
+
 }
