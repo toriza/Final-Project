@@ -1,8 +1,12 @@
 package com.example.pantrypal.model;
 
 import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 
 public class DryProduct extends Product {
 
@@ -18,16 +22,4 @@ public class DryProduct extends Product {
         this.edible = edible;
     }
 
-
-    public String getEdibilityStatus() {
-        return edible != null && edible ? "Dry Food" : "Household items";
-    }
-
-    public Boolean getEdible() {
-        return edible;
-    }
-
-    public void setEdible(Boolean edible) {
-        this.edible = edible;
-    }
 }
