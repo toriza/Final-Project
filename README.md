@@ -76,7 +76,7 @@ A global exception handler is created using @ControllerAdvice to catch and handl
 
 ---
 
-///## 8. Diagrams
+//## 8. Diagrams
 
-///### Class Diagram
+//### Class Diagram
 
